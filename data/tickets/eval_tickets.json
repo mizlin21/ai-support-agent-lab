@@ -1,0 +1,42 @@
+[
+  {
+    "ticket_id": "EVAL-001",
+    "subject": "Export to PDF does nothing",
+    "message": "Clicking export gives no response at all.",
+    "category_expected": "quote_export",
+    "resolution_expected": "kb_resolvable",
+    "correct_article_id": "quote_export_issue"
+  },
+  {
+    "ticket_id": "EVAL-002",
+    "subject": "Password reset not working",
+    "message": "I reset my password but still can’t log in.",
+    "category_expected": "login_access",
+    "resolution_expected": "kb_resolvable",
+    "correct_article_id": "login_reset"
+  },
+  {
+    "ticket_id": "EVAL-003",
+    "subject": "CRM not syncing new quotes",
+    "message": "Quotes are not appearing in Salesforce after creation.",
+    "category_expected": "crm_sync",
+    "resolution_expected": "partial_or_escalate",
+    "correct_article_id": "crm_sync_delay"
+  },
+  {
+    "ticket_id": "EVAL-004",
+    "subject": "Multiple users reporting export failure",
+    "message": "Export fails for everyone in our team across browsers.",
+    "category_expected": "quote_export",
+    "resolution_expected": "escalate",
+    "correct_article_id": "quote_export_issue"
+  },
+  {
+    "ticket_id": "EVAL-005",
+    "subject": "Reports timing out",
+    "message": "Reports fail when dataset is large.",
+    "category_expected": "report_timeout",
+    "resolution_expected": "partial_or_escalate",
+    "correct_article_id": "report_timeout"
+  }
+]

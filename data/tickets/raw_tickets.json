@@ -1,0 +1,92 @@
+[
+  {
+    "ticket_id": "TICK-001",
+    "customer_tier": "enterprise",
+    "subject": "Cannot log into account after password reset",
+    "message": "I reset my password this morning but now it keeps saying invalid credentials when I try to log in.",
+    "product_area": "authentication",
+    "environment": "web",
+    "priority": "high"
+  },
+  {
+    "ticket_id": "TICK-002",
+    "customer_tier": "mid-market",
+    "subject": "Export to PDF not working",
+    "message": "When I click export on a quote, nothing happens. No file downloads and no error message.",
+    "product_area": "quote_management",
+    "environment": "web",
+    "priority": "medium"
+  },
+  {
+    "ticket_id": "TICK-003",
+    "customer_tier": "enterprise",
+    "subject": "CRM sync delay",
+    "message": "Our Salesforce integration is not updating new quotes. It’s been over 2 hours.",
+    "product_area": "integrations",
+    "environment": "api",
+    "priority": "high"
+  },
+  {
+    "ticket_id": "TICK-004",
+    "customer_tier": "small-business",
+    "subject": "User cannot access reports",
+    "message": "One of our team members is getting access denied when trying to open reports.",
+    "product_area": "permissions",
+    "environment": "web",
+    "priority": "medium"
+  },
+  {
+    "ticket_id": "TICK-005",
+    "customer_tier": "mid-market",
+    "subject": "Dashboard not loading properly",
+    "message": "The dashboard widgets are stuck loading and never show any data.",
+    "product_area": "ui",
+    "environment": "web",
+    "priority": "medium"
+  },
+  {
+    "ticket_id": "TICK-006",
+    "customer_tier": "enterprise",
+    "subject": "Reports timing out",
+    "message": "Every time we try to generate a large report, it times out after a few seconds.",
+    "product_area": "reporting",
+    "environment": "web",
+    "priority": "high"
+  },
+  {
+    "ticket_id": "TICK-007",
+    "customer_tier": "small-business",
+    "subject": "Password reset email not received",
+    "message": "I requested a password reset but never got the email.",
+    "product_area": "authentication",
+    "environment": "email",
+    "priority": "high"
+  },
+  {
+    "ticket_id": "TICK-008",
+    "customer_tier": "enterprise",
+    "subject": "Multiple users cannot export quotes",
+    "message": "Several users are reporting export failures across different browsers.",
+    "product_area": "quote_management",
+    "environment": "web",
+    "priority": "high"
+  },
+  {
+    "ticket_id": "TICK-009",
+    "customer_tier": "mid-market",
+    "subject": "CRM sync duplicates records",
+    "message": "Our CRM is creating duplicate entries every time a quote is updated.",
+    "product_area": "integrations",
+    "environment": "api",
+    "priority": "high"
+  },
+  {
+    "ticket_id": "TICK-010",
+    "customer_tier": "small-business",
+    "subject": "UI looks broken on Chrome",
+    "message": "The layout looks completely off and buttons overlap each other.",
+    "product_area": "ui",
+    "environment": "browser_chrome",
+    "priority": "medium"
+  }
+]

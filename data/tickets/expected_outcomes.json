@@ -1,0 +1,7 @@
+{
+  "resolution_types": [
+    "kb_resolvable",
+    "partial_or_escalate",
+    "escalate"
+  ]
+}
