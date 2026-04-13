@@ -1,0 +1,32 @@
+[
+  {
+    "id": "login_reset",
+    "file": "login_reset.md",
+    "tags": ["authentication", "login", "password"]
+  },
+  {
+    "id": "quote_export_issue",
+    "file": "quote_export_issue.md",
+    "tags": ["quote", "export", "pdf"]
+  },
+  {
+    "id": "crm_sync_delay",
+    "file": "crm_sync_delay.md",
+    "tags": ["crm", "integration", "sync"]
+  },
+  {
+    "id": "user_permissions",
+    "file": "user_permissions.md",
+    "tags": ["permissions", "access", "roles"]
+  },
+  {
+    "id": "browser_cache_issue",
+    "file": "browser_cache_issue.md",
+    "tags": ["browser", "cache", "ui"]
+  },
+  {
+    "id": "report_timeout",
+    "file": "report_timeout.md",
+    "tags": ["reporting", "timeout", "performance"]
+  }
+]
