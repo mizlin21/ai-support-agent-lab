@@ -1,0 +1,6 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Project outputs
+data/outputs/*.json
