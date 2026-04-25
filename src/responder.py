@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List
@@ -19,12 +20,6 @@ class ResponseResult:
 class SupportResponder:
     """
     Generate KB-grounded support responses for classified tickets.
-
-    Responsibilities:
-    - read the selected KB article
-    - extract structured troubleshooting steps
-    - draft a professional support reply
-    - recommend escalation when the issue appears unsafe to auto-resolve
     """
 
     def __init__(self, kb_articles_path: str = "data/kb/articles") -> None:
@@ -39,9 +34,6 @@ class SupportResponder:
         severity: str,
         resolution_path: str,
     ) -> ResponseResult:
-        """
-        Generate a support response using the selected KB article.
-        """
         ticket_id = str(ticket.get("ticket_id", "UNKNOWN"))
         subject = str(ticket.get("subject", "")).strip()
         message = str(ticket.get("message", "")).strip()
@@ -56,15 +48,10 @@ class SupportResponder:
             resolution_path=resolution_path,
         )
 
-        response_type = (
-            "escalation_recommended"
-            if escalation_recommended
-            else "kb_resolution"
-        )
+        response_type = "escalation_recommended" if escalation_recommended else "kb_resolution"
 
         response_text = self._build_response(
             subject=subject,
-            message=message,
             category=category,
             severity=severity,
             resolution_path=resolution_path,
@@ -85,9 +72,6 @@ class SupportResponder:
         )
 
     def _read_article(self, article_file: str) -> str:
-        """
-        Read the KB article contents from disk.
-        """
         if not article_file:
             return ""
 
@@ -100,6 +84,10 @@ class SupportResponder:
     def _extract_section_bullets(self, article_text: str, section_name: str) -> List[str]:
         """
         Extract numbered or dashed items from a named markdown section.
+        Supports:
+        - 1. Step text
+        - 12. Step text
+        - - Step text
         """
         if not article_text:
             return []
@@ -116,17 +104,12 @@ class SupportResponder:
                 in_section = current_section == section_name.lower()
                 continue
 
-            if not in_section:
+            if not in_section or not line:
                 continue
 
-            if not line:
-                continue
-
-            if line.startswith("## "):
-                break
-
-            if line[:2].isdigit() and line[2:3] == ".":
-                collected.append(line[3:].strip())
+            if re.match(r"^\d+\.\s+", line):
+                cleaned = re.sub(r"^\d+\.\s+", "", line).strip()
+                collected.append(cleaned)
             elif line.startswith("- "):
                 collected.append(line[2:].strip())
 
@@ -138,9 +121,6 @@ class SupportResponder:
         severity: str,
         resolution_path: str,
     ) -> bool:
-        """
-        Determine whether the response should explicitly recommend escalation.
-        """
         text = message.lower()
 
         escalation_signals = [
@@ -170,7 +150,6 @@ class SupportResponder:
     def _build_response(
         self,
         subject: str,
-        message: str,
         category: str,
         severity: str,
         resolution_path: str,
@@ -179,9 +158,6 @@ class SupportResponder:
         escalate_conditions: List[str],
         escalation_recommended: bool,
     ) -> str:
-        """
-        Build the final customer-facing support response.
-        """
         greeting = "Hello,"
         acknowledgement = self._build_acknowledgement(subject, category)
         context_line = self._build_context_line(category, severity, article_id)
@@ -238,7 +214,11 @@ class SupportResponder:
             "report_timeout": "This appears related to reporting performance or timeouts.",
         }
 
-        category_hint = category_map.get(category, "This appears related to a support issue requiring review.")
+        category_hint = category_map.get(
+            category,
+            "This appears related to a support issue requiring review.",
+        )
+
         return f"Thanks for reporting {subject_text.lower()}. {category_hint}"
 
     def _build_context_line(self, category: str, severity: str, article_id: str) -> str:
@@ -259,18 +239,13 @@ class SupportResponder:
 
         base = common_requests.get(
             category,
-            "If needed, please include any error details, timestamps, and screenshots."
+            "If needed, please include any error details, timestamps, and screenshots.",
         )
 
-        if escalate_conditions:
-            return f"\n{base}"
         return f"\n{base}"
 
 
 def result_to_dict(result: ResponseResult) -> Dict[str, Any]:
-    """
-    Convert a ResponseResult into a serializable dictionary.
-    """
     return {
         "ticket_id": result.ticket_id,
         "article_id": result.article_id,

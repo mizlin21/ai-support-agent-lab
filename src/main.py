@@ -4,13 +4,13 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List
 
-from src.classifier import TicketClassifier, result_to_dict as classifier_result_to_dict
-from src.escalation import EscalationEngine, result_to_dict as escalation_result_to_dict
-from src.evaluator import SupportEvaluator, result_to_dict as evaluator_result_to_dict
-from src.metrics import MetricsCalculator
-from src.responder import SupportResponder, result_to_dict as responder_result_to_dict
-from src.retriever import KnowledgeBaseRetriever, result_to_dict as retriever_result_to_dict
-from src.ticket_loader import TicketLoader
+from classifier import TicketClassifier, result_to_dict as classifier_result_to_dict
+from escalation import EscalationEngine, result_to_dict as escalation_result_to_dict
+from evaluator import SupportEvaluator, result_to_dict as evaluator_result_to_dict
+from metrics import MetricsCalculator
+from responder import SupportResponder, result_to_dict as responder_result_to_dict
+from retriever import KnowledgeBaseRetriever, result_to_dict as retriever_result_to_dict
+from ticket_loader import TicketLoader
 
 
 OUTPUT_DIR = Path("data/outputs")
