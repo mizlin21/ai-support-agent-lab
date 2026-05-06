@@ -1,71 +1,168 @@
 # AI Support Agent Lab
 
-AI Support Agent Lab is a simulated SaaS support environment designed to model, evaluate, and improve AI-assisted ticket resolution workflows.
-
-This project focuses on how AI agents can handle repeatable support tasks—such as ticket classification, knowledge base retrieval, and response generation—while maintaining clear escalation paths and measurable quality controls.
+AI Support Agent Lab is a simulated SaaS support system designed to model how AI agents can handle end-to-end ticket resolution — not just assist humans, but operate as part of the support workflow itself.
 
 ---
 
-## Why This Project Exists
+## 🚀 Why This Project Exists
 
-Most support teams are experimenting with AI tools, but few systems are designed with:
+Most teams ask:
 
-- structured evaluation
-- measurable performance metrics
-- controlled escalation logic
-- continuous improvement loops
+> “How can AI help support agents work faster?”
 
-This project was built to simulate a realistic support operation where every ticket is treated as a data point, and every agent decision can be evaluated, improved, and scaled.
+This project explores a different question:
 
----
+> **What would a support system look like if AI handled the predictable work end-to-end?**
 
-## What This Project Simulates
+The focus is not on generating answers —  
+but on building a system that can:
 
-A SaaS platform support environment where:
-
-- users submit tickets related to login issues, permissions, reporting errors, and system failures
-- an AI agent attempts to resolve tickets using a structured knowledge base
-- unresolved or high-risk issues are escalated with structured defect reports
-- performance is measured across multiple dimensions, including resolution accuracy and escalation quality
+- make decisions  
+- stay grounded in knowledge  
+- escalate safely  
+- measure its own performance  
+- improve through failure  
 
 ---
 
-## Core Capabilities
+## ⚙️ System Overview
 
-- Ticket classification (category, severity, resolution path)
-- Knowledge base retrieval (article matching and relevance scoring)
-- Grounded response generation (KB-backed support replies)
-- Escalation decisioning (when to involve human support or engineering)
-- Structured defect triage (reproducible issue reports)
-- Evaluation pipeline (accuracy, resolution rate, false resolution risk)
-- Continuous improvement loop (failure analysis and iteration)
+The system simulates a SaaS support environment where an AI agent:
+
+1. classifies incoming tickets  
+2. retrieves the most relevant knowledge base article  
+3. generates a grounded support response  
+4. determines whether escalation is required  
+5. produces structured escalation outputs  
+6. evaluates its own performance  
+7. tracks system-wide metrics  
+
+This is not a chatbot.  
+It is a **modular, evaluatable support system**.
 
 ---
 
-## Why This Matters
+## 🧩 Architecture
 
-As AI becomes integrated into support operations, the challenge is no longer just generating responses—but building systems that:
+```text
+Support Ticket
+↓
+Ticket Loader
+↓
+Classifier
+↓
+Knowledge Base Retriever
+↓
+Response Generator
+↓
+Escalation Decision
+↓
+Evaluator
+↓
+Metrics + Failure Analysis
+```
 
-- know when they are correct
-- know when they are uncertain
-- improve over time based on real failures
+Each component is isolated, testable, and produces structured outputs.
 
+---
 
-This project demonstrates how to design AI systems that operate within those constraints.
+## 📊 Results
 
+After iteration and debugging:
 
-## Project Status
+- Classification accuracy: **100%**
+- Retrieval accuracy: **100%**
+- Response grounded rate: **100%**
+- Overall pass rate: **71%**
+- Escalation rate: **29%**
+- False resolution rate: **0%**
 
-This project is currently in active development.
+---
 
-Phase 1 focuses on:
-- repository structure
-- system design and architecture
-- defining the simulated SaaS support environment
+## 🧠 Key Insight
 
-Upcoming phases will implement:
-- ticket classification and routing
-- knowledge base retrieval
-- response generation
-- escalation workflows
-- evaluation metrics and performance tracking
+The system initially achieved **0% pass rate** — not due to logic failure,  
+but because responses were not properly grounded in knowledge base steps.
+
+Fixing that revealed a critical principle:
+
+> **AI systems fail quietly when grounding is broken.**
+
+After correcting response grounding and introducing ambiguous tickets:
+
+- performance became realistic  
+- escalation behavior balanced  
+- system reliability improved  
+
+---
+
+## 🔁 Failure Analysis
+
+To simulate real-world conditions, ambiguous tickets were introduced:
+
+- unclear user intent  
+- inconsistent issue patterns  
+- overlapping categories  
+
+This exposed system limitations and led to:
+
+- improved parsing logic  
+- refined escalation thresholds  
+- more realistic evaluation outcomes  
+
+---
+
+## 🛠️ Tech Stack
+
+- Python  
+- JSON-based datasets  
+- Modular pipeline design  
+- Rule-based + structured logic (LLM-ready architecture)  
+- Pytest for validation  
+
+---
+
+## 📂 Project Structure
+
+```text
+ai-support-agent-lab/
+├── src/    # Core pipeline components
+├── data/   # Tickets, KB, outputs
+├── tests/  # Unit + end-to-end tests
+├── docs/   # Architecture + walkthrough + analysis
+└── README.md
+```
+
+## ▶️ How to Run
+
+```bash
+python src/main.py
+```
+
+Outputs will be generated in:
+`data/outputs/`
+
+## 📘 Documentation
+
+- Architecture: `docs/architecture.md`
+- Demo Walkthrough: `docs/demo_walkthrough.md`
+- Failure Analysis: `docs/evidence.md`
+
+## 🎯 What This Project Demonstrates
+
+This project shows the ability to:
+- design end-to-end AI systems
+- build structured, testable pipelines
+- implement grounded response generation
+- define safe escalation boundaries
+- evaluate system performance with metrics
+- improve systems through failure analysis
+
+## 🚀 Next Steps
+
+Future improvements include:
+- model-assisted classification
+- advanced retrieval (semantic search / embeddings)
+- confidence-based routing decisions
+- real-world ticket ingestion formats (e.g., Zendesk export)
+- monitoring and evaluation dashboards
